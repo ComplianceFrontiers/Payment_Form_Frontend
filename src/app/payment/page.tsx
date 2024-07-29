@@ -47,17 +47,20 @@ const Payment = () => {
         </div>
 
         <div className="form-group product-selection">
-          <label>My Products</label>
-          <div className="product">
-            <input type="checkbox" id="registrationFees" checked disabled />
-            <label htmlFor="registrationFees">Registration Fees</label>
-            <span>$100</span>
-          </div>
-          <div className="total">
-            <span>Total</span>
-            <span>$100</span>
-          </div>
-        </div>
+  <label>My Products</label>
+   
+  <div className="total" style={{ backgroundColor: '#fff' }}>
+  {/* <input type="checkbox" checked /> */}
+  <span>Registration Fees</span>
+  <span className="total-price">$100</span>
+</div>
+
+  <div className="total">
+    <span>Total</span>
+    <span className="total-price">$100</span>
+  </div>
+</div>
+
 
         <div className="form-group credit-card-details">
           <label htmlFor="cardFirstName">Credit Card Details</label>
