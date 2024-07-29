@@ -1,0 +1,260 @@
+.payment-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    .tournament-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center the content horizontally */
+      text-align: center;
+  
+      .tournament-logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      
+      h1 {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+      }
+      
+      p {
+        color: #666;
+      }
+    }
+  
+    .registration-form {
+      .form-group {
+        margin-bottom: 20px;
+  
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+  
+        input, select {
+          width: calc(100% - 20px);
+          padding: 10px;
+          margin: 0;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+  
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+  
+        .name-fields {
+          display: flex;
+          justify-content: space-between;
+  
+          input {
+            width: 48%;
+          }
+        }
+      }
+  
+      .product-selection {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 4px;
+  
+        .product {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+  
+          label {
+            margin: 0;
+          }
+  
+          span {
+            font-weight: bold;
+          }
+        }
+  
+        .total {
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.1em;
+          font-weight: bold;
+        }
+      }
+  
+      .credit-card-details {
+        input {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+  
+        .card-details {
+          display: flex;
+          justify-content: space-between;
+  
+          input {
+            width: 48%;
+          }
+        }
+      }
+  
+      .submit-button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1em;
+        border-radius: 4px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  .payment-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    .tournament-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  
+      .tournament-logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+  
+      h1 {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+      }
+  
+      p {
+        color: #666;
+      }
+    }
+  
+    .registration-form {
+      .form-group {
+        margin-bottom: 20px;
+  
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+  
+        .required {
+          color: red;
+        }
+  
+        input, select {
+          width: calc(100% - 20px);
+          padding: 10px;
+          margin: 0;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+  
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+  
+        .name-fields {
+          display: flex;
+          justify-content: space-between;
+  
+          input {
+            width: 48%;
+          }
+        }
+      }
+  
+      .product-selection {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 4px;
+  
+        .product {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+  
+          label {
+            margin: 0;
+          }
+  
+          span {
+            font-weight: bold;
+          }
+        }
+  
+        .total {
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.1em;
+          font-weight: bold;
+        }
+      }
+  
+      .credit-card-details {
+        input {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+  
+        .card-details {
+          display: flex;
+          justify-content: space-between;
+  
+          input {
+            width: 48%;
+          }
+        }
+      }
+  
+      .submit-button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1em;
+        border-radius: 4px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+  
+      .note {
+        margin-top: 20px;
+        color: #666;
+  
+        .required {
+          color: red;
+        }
+      }
+    }
+  }
+  
