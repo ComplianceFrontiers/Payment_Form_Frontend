@@ -24,7 +24,7 @@ const Payment = () => {
     event.preventDefault(); // Prevent the default form submission behavior
 
     try {
-      await axios.post('http://127.0.0.1:80/signup', formData);
+      await axios.post('https://payment-form-backend.vercel.app/signup', formData);
       // Redirect to Stripe payment page
       window.location.href = 'https://buy.stripe.com/3cs4jw8xYePG6Qg9AA';
     } catch (error) {

@@ -21,7 +21,7 @@ const Admin: React.FC = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('http://127.0.0.1:80/Club_users')
+    fetch('https://payment-form-backend.vercel.app/Club_users')
       .then(response => response.json())
       .then(data => {
         console.log('Fetched data:', data); // Debugging
