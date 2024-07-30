@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './payment.scss';
 
@@ -14,6 +14,22 @@ const Payment = () => {
     section: '',
     signupDate: new Date().toISOString() // Initialize with the current date and time
   });
+  
+  const [tournamentTimings, setTournamentTimings] = useState<string>('');
+
+  useEffect(() => {
+    // Fetch tournament timings from the API
+    const fetchTournamentTimings = async () => {
+      try {
+        const response = await axios.get('https://payment-form-backend.vercel.app/tournament-timings');
+        setTournamentTimings(response.data);
+      } catch (error) {
+        console.error('Error fetching tournament timings:', error);
+      }
+    };
+
+    fetchTournamentTimings();
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = event.target;
@@ -37,7 +53,7 @@ const Payment = () => {
       <div className="tournament-header">
         <img src="/images/logo.png" alt="Chess Tournament Logo" className="tournament-logo" />
         <h1>Kids Chess Tournament: Registration</h1>
-        <p>Tournament Timing: August 3rd, 2024 @ 2 pm onwards</p>
+        <p>Tournament Timing: {tournamentTimings || 'Loading...'}</p>
       </div>
 
       <form className="registration-form" onSubmit={handleSubmit}>

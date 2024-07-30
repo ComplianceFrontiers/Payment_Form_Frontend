@@ -57,7 +57,7 @@ const Admin: React.FC = () => {
       });
 
     // Fetch tournament timings from the API
-    fetch('http://127.0.0.1:80/tournament-timings')
+    fetch('https://payment-form-backend.vercel.app/tournament-timings')
       .then(response => response.json())
       .then(data => {
         setTournamentTimings(data);
@@ -87,7 +87,7 @@ const Admin: React.FC = () => {
   };
 
   const handleSaveClick = () => {
-    fetch('http://127.0.0.1:80/update_tournament', {
+    fetch('https://payment-form-backend.vercel.app/update_tournament', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -110,24 +110,26 @@ const Admin: React.FC = () => {
   return (
     <div className="admin-container">
       <div className="header">
-        <button className="export-button" onClick={exportToExcel}>Export to Excel</button>
-        <div className="tournament-timing">
-          {isEditing ? (
-            <>
-              <input
-                type="text"
-                value={newTournamentTimings}
-                onChange={handleInputChange}
-              />
-              <button onClick={handleSaveClick}>Save</button>
-              <button onClick={() => setIsEditing(false)}>Cancel</button>
-            </>
-          ) : (
-            <>
-              <span className="tournament-timings">{tournamentTimings}</span>
-              <button onClick={handleEditClick}>Edit</button>
-            </>
-          )}
+        <div className="actions-container">
+          <button className="export-button" onClick={exportToExcel}>Export to Excel</button>
+          <div className="tournament-timing">
+            {isEditing ? (
+              <>
+                <input
+                  type="text"
+                  value={newTournamentTimings}
+                  onChange={handleInputChange}
+                />
+                <button className="save-button" onClick={handleSaveClick}>Save</button>
+                <button className="cancel-button" onClick={() => setIsEditing(false)}>Cancel</button>
+              </>
+            ) : (
+              <>
+                <span className="tournament-timings">{tournamentTimings}</span>
+                <button className="edit-button" onClick={handleEditClick}>Edit</button>
+              </>
+            )}
+          </div>
         </div>
       </div>
       <table className="users-table">
