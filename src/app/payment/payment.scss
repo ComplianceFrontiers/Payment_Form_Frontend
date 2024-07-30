@@ -3,7 +3,7 @@
   margin: auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,6 +23,7 @@
 h1 {
   margin-bottom: 10px;
   font-size: 1.5em;
+  color: black;
 }
 
 p {
@@ -34,9 +35,13 @@ p {
     margin-bottom: 20px;
 
     label {
+      color: black;
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
+    }
+    option{
+      color: black;
     }
 
     .required {
@@ -47,7 +52,8 @@ p {
       width: calc(100% - 20px);
       padding: 10px;
       margin: 0;
-      border: 1px solid #ddd;
+      color: black;
+      border: 1px solid #050000;
       border-radius: 4px;
 
       &:focus {
@@ -61,6 +67,7 @@ p {
       justify-content: space-between;
 
       input {
+        color: black;
         width: 48%;
       }
     }
