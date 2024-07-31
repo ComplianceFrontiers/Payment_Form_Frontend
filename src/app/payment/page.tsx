@@ -132,8 +132,8 @@ const Payment = () => {
             onChange={handleChange}
           >
             <option value="">Please Select</option>
-            <option value="grade1">Championship (K-2; 3rd Grade; 4th Grade; 5th Grade) - $20.00</option>
-            <option value="grade2">Open - $20.00</option>          
+            <option value="Championship (K-2; 3rd Grade; 4th Grade; 5th Grade) - $20.00">Championship (K-2; 3rd Grade; 4th Grade; 5th Grade) - $20.00</option>
+            <option value="Open - $20.00">Open - $20.00</option>          
           </select>
         </div>
 
