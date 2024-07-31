@@ -37,16 +37,40 @@ const Payment = () => {
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-
+    event.preventDefault();
+  
     try {
+      // First, submit the form data
       await axios.post('https://payment-form-backend.vercel.app/signup', formData);
+  
+      // Prepare the email details
+      const emailData = {
+        email: formData.email,
+        subject: `Thank You for Registering! Tournament Details for ${tournamentTimings}`,
+        body: `
+          Dear ${formData.parentFirstName} ${formData.parentLastName},
+  
+          Thank you for registering  in our Kids Chess Tournament.
+  
+          Tournament Timing: ${tournamentTimings}
+  
+          We look forward to seeing you there!
+  
+          Best regards,
+          The Chess Tournament Team
+        `
+      };
+  
+      // Send the email
+      await axios.post('https://payment-form-backend.vercel.app/send-email', emailData);
+  
       // Redirect to Stripe payment page
       window.location.href = 'https://buy.stripe.com/3cs4jw8xYePG6Qg9AA';
     } catch (error) {
       console.error('Error during API call:', error);
     }
   };
+  
 
   return (
     <div className="payment-container">
