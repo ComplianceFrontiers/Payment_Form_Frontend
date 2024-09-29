@@ -47,7 +47,7 @@ const Payment = () => {
         email: formData.email,
         subject: `Thank You for Registering! Tournament Details for ${tournamentTimings}`,
         body: `
-          Dear ${formData.parentFirstName} ${formData.parentLastName},
+          Dear ${formData.playerFirstName} ${formData.playerLastName},
   
           Thank you for registering in our Casual Chess Tournament.
   
