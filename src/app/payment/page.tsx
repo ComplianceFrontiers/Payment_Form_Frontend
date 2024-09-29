@@ -158,7 +158,7 @@ const Payment = () => {
             onChange={handleChange}
           >
             <option value="">Please Select</option>
-            <option value="K – 3 - ($20)">K – 3 - ($20)</option>
+            <option value="K – 2 - ($20)">K – 2 - ($20)</option>
             <option value="3rd – 5th grade - ($20)">3rd – 5th grade - ($20)</option>
             <option value="6th – 8th grade - ($20)">6th – 8th grade - ($20)</option>
             <option value="9th – 12th grade - ($20)">9th – 12th grade - ($20)</option>
