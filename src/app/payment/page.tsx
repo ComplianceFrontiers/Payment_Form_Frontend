@@ -12,13 +12,13 @@ const Payment = () => {
     phoneNumber: '',
     email: '',
     section: '',
-    signupDate: new Date().toISOString() // Initialize with the current date and time
+    signupDate: new Date().toISOString()
   });
   
   const [tournamentTimings, setTournamentTimings] = useState<string>('');
+  const [loading, setLoading] = useState(false); // Add loading state
 
   useEffect(() => {
-    // Fetch tournament timings from the API
     const fetchTournamentTimings = async () => {
       try {
         const response = await axios.get('https://payment-form-backend.vercel.app/tournament-timings');
@@ -38,19 +38,18 @@ const Payment = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true); // Set loading to true on submit
   
     try {
-      // First, submit the form data
       await axios.post('https://payment-form-backend.vercel.app/signup', formData);
   
-      // Prepare the email details
       const emailData = {
         email: formData.email,
         subject: `Thank You for Registering! Tournament Details for ${tournamentTimings}`,
         body: `
           Dear ${formData.parentFirstName} ${formData.parentLastName},
   
-          Thank you for registering  in our Kids Chess Tournament.
+          Thank you for registering in our Casual Chess Tournament.
   
           Tournament Timing: ${tournamentTimings}
   
@@ -61,22 +60,27 @@ const Payment = () => {
         `
       };
   
-      // Send the email
       await axios.post('https://payment-form-backend.vercel.app/send-email', emailData);
   
-      // Redirect to Stripe payment page
       window.location.href = 'https://buy.stripe.com/3cs4jw8xYePG6Qg9AA';
     } catch (error) {
       console.error('Error during API call:', error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
   
-
   return (
     <div className="payment-container">
+      {loading && (
+        <div className="loading-overlay">
+          <img src="/images/loading.gif" alt="Loading..." />
+        </div>
+      )}
+
       <div className="tournament-header">
         <img src="/images/logo.png" alt="Chess Tournament Logo" className="tournament-logo" />
-        <h1>Kids Chess Tournament: Registration</h1>
+        <h1>Casual Chess Tournament: Registration</h1>
         <p>Tournament Timing: {tournamentTimings || 'Loading...'}</p>
       </div>
 
@@ -103,13 +107,12 @@ const Payment = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="parentFirstName">Parent Name <span className="required">*</span></label>
+          <label htmlFor="parentFirstName">Parent Name (for minors)</label>
           <div className="name-fields">
             <input 
               type="text" 
               id="parentFirstName" 
               placeholder="First Name" 
-              required 
               value={formData.parentFirstName}
               onChange={handleChange}
             />
@@ -128,7 +131,6 @@ const Payment = () => {
           <input 
             type="tel" 
             id="phoneNumber" 
-            placeholder="(000) 000-0000" 
             required 
             value={formData.phoneNumber}
             onChange={handleChange}
@@ -140,14 +142,14 @@ const Payment = () => {
           <input 
             type="email" 
             id="email" 
-            placeholder="example@yahoo.com" 
+            placeholder="example@gmail.com" 
             required 
             value={formData.email}
             onChange={handleChange}
           />
         </div>
 
-        <div className="form-group">
+        <div className="form-group"> 
           <label htmlFor="section">Section <span className="required">*</span></label>
           <select 
             id="section" 
@@ -156,8 +158,11 @@ const Payment = () => {
             onChange={handleChange}
           >
             <option value="">Please Select</option>
-            <option value="Championship (K-2; 3rd Grade; 4th Grade; 5th Grade) - $20.00">Championship (K-2; 3rd Grade; 4th Grade; 5th Grade) - $20.00</option>
-            <option value="Open - $20.00">Open - $20.00</option>          
+            <option value="K – 3 - ($20)">K – 3 - ($20)</option>
+            <option value="3rd – 5th grade - ($20)">3rd – 5th grade - ($20)</option>
+            <option value="6th – 8th grade - ($20)">6th – 8th grade - ($20)</option>
+            <option value="9th – 12th grade - ($20)">9th – 12th grade - ($20)</option>
+            <option value="Open - ($20)">Open - ($20)</option>
           </select>
         </div>
 
