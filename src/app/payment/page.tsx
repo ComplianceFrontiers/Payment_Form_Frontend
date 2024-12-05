@@ -80,7 +80,7 @@ const Payment = () => {
 
       <div className="tournament-header">
         <img src="/images/logo.png" alt="Chess Tournament Logo" className="tournament-logo" />
-        <h1>Casual Chess Tournament</h1>
+        <h1>Chess Club Registration</h1>
         <p>Tournament Timing: {tournamentTimings || 'Loading...'}</p>
       </div>
 
