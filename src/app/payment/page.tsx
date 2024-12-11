@@ -166,16 +166,17 @@ const Payment = () => {
           </select>
   </div>
   <div className="button-group">
-    <button type="submit" className="submit-button">
-      Submit
-    </button>
-    <button
+  <button
       type="button"
       className="back-button"
       onClick={() => (window.location.href = 'https://www.chesschamps.us/')}
     >
       Back
     </button>
+    <button type="submit" className="submit-button">
+      Submit
+    </button>
+   
     </div>
 </form>
 
