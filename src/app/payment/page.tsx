@@ -81,7 +81,7 @@ const Payment = () => {
       <div className="tournament-header">
         <img src="/images/logo.png" alt="Chess Tournament Logo" className="tournament-logo" />
         <h1>Chess Club Registration</h1>
-        <p>Tournament Timing: {tournamentTimings || 'Loading...'}</p>
+        <p>Club Timing: {tournamentTimings || 'Loading...'}</p>
       </div>
 
       <form className="registration-form" onSubmit={handleSubmit}>
