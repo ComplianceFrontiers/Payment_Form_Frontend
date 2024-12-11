@@ -85,28 +85,28 @@ const Payment = () => {
       </div>
 
       <form className="registration-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+  <div className="form-group">
           <label htmlFor="playerFirstName">Player Name <span className="required">*</span></label>
-          <div className="name-fields">
-            <input 
-              type="text" 
-              id="playerFirstName" 
-              placeholder="First Name" 
-              required 
-              value={formData.playerFirstName}
-              onChange={handleChange}
-            />
-            <input 
-              type="text" 
-              id="playerLastName" 
-              placeholder="Last Name" 
-              value={formData.playerLastName}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+    <div className="name-fields">
+      <input
+        type="text"
+        id="playerFirstName"
+        placeholder="First Name"
+        required
+        value={formData.playerFirstName}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        id="playerLastName"
+        placeholder="Last Name"
+        value={formData.playerLastName}
+        onChange={handleChange}
+      />
+    </div>
+  </div>
 
-        <div className="form-group">
+  <div className="form-group">
           <label htmlFor="parentFirstName">Parent Name (for minors)</label>
           <div className="name-fields">
             <input 
@@ -127,7 +127,7 @@ const Payment = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="phoneNumber">Phone Number <span className="required">*</span></label>
+    <label htmlFor="phoneNumber">Phone Number <span className="required">*</span></label>
           <input 
             type="tel" 
             id="phoneNumber" 
@@ -164,10 +164,21 @@ const Payment = () => {
             <option value="9th – 12th grade - ($20)">9th – 12th grade - ($20)</option>
             <option value="Open - ($20)">Open - ($20)</option>
           </select>
-        </div>
+  </div>
+  <div className="button-group">
+    <button type="submit" className="submit-button">
+      Submit
+    </button>
+    <button
+      type="button"
+      className="back-button"
+      onClick={() => (window.location.href = 'https://www.chesschamps.us/')}
+    >
+      Back
+    </button>
+    </div>
+</form>
 
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
     </div>
   );
 };
