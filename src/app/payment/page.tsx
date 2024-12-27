@@ -157,7 +157,7 @@ const Payment = () => {
           <button
             type="button"
             className="back-button"
-            onClick={() => (window.location.href = 'https://www.chesschamps.us/')}
+            onClick={() => (window.location.href = 'https://www.chesschamps.us/events')}
           >
             Back
           </button>
