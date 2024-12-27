@@ -1,22 +1,22 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './payment.scss';
 
 const Payment = () => {
   const [formData, setFormData] = useState({
-    playerFirstName: '',
-    playerLastName: '',
-    parentFirstName: '',
-    parentLastName: '',
-    phoneNumber: '',
+    parent_first_name: "",
+    parent_last_name: "",
+    child_first_name: "",
+    child_last_name: "",
+    phone: '',
     email: '',
-    section: '',
-    signupDate: new Date().toISOString()
+    chessclub: true,
   });
-  
+
   const [tournamentTimings, setTournamentTimings] = useState<string>('');
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false); // Loading state
+  const [showThankYouPopup, setShowThankYouPopup] = useState(false); // Thank you popup state
 
   useEffect(() => {
     const fetchTournamentTimings = async () => {
@@ -30,6 +30,19 @@ const Payment = () => {
 
     fetchTournamentTimings();
   }, []);
+  const closePopup = () => {
+    setShowThankYouPopup(false); // Close the Thank You popup
+    setFormData({
+      parent_first_name: "",
+      parent_last_name: "",
+      child_first_name: "",
+      child_last_name: "",
+      phone: '',
+      email: '',
+      chessclub: true,
+    }); // Reset the form fields
+  };
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = event.target;
@@ -39,42 +52,33 @@ const Payment = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true); // Set loading to true on submit
-  
+
     try {
-      await axios.post('https://payment-form-backend.vercel.app/signup', formData);
-  
-      const emailData = {
-        email: formData.email,
-        subject: `Thank You for Registering! Tournament Details for ${tournamentTimings}`,
-        body: `
-          Dear ${formData.playerFirstName} ${formData.playerLastName},
-  
-          Thank you for registering in our Casual Chess Tournament.
-  
-          Tournament Timing: ${tournamentTimings}
-  
-          We look forward to seeing you there!
-  
-          Best regards,
-          The Chess Tournament Team
-        `
-      };
-  
-      await axios.post('https://payment-form-backend.vercel.app/send-email', emailData);
-  
-      window.location.href = 'https://buy.stripe.com/3cs4jw8xYePG6Qg9AA';
+      await axios.post('https://backend-chess-tau.vercel.app/new_online_purchase_user', formData);
+      setShowThankYouPopup(true); // Show the Thank You popup
     } catch (error) {
       console.error('Error during API call:', error);
     } finally {
       setLoading(false); // Reset loading state
     }
   };
+
   
   return (
     <div className="payment-container">
       {loading && (
         <div className="loading-overlay">
           <img src="/images/loading.gif" alt="Loading..." />
+        </div>
+      )}
+
+      {showThankYouPopup && (
+        <div className="thank-you-popup">
+          <div className="popup-content">
+            <h2>Thank You!</h2>
+            <p>Your registration has been submitted successfully.</p>
+            <button onClick={closePopup}>Close</button>
+          </div>
         </div>
       )}
 
@@ -85,54 +89,54 @@ const Payment = () => {
       </div>
 
       <form className="registration-form" onSubmit={handleSubmit}>
-  <div className="form-group">
-          <label htmlFor="playerFirstName">Player Name <span className="required">*</span></label>
-    <div className="name-fields">
-      <input
-        type="text"
-        id="playerFirstName"
-        placeholder="First Name"
-        required
-        value={formData.playerFirstName}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        id="playerLastName"
-        placeholder="Last Name"
-        value={formData.playerLastName}
-        onChange={handleChange}
-      />
-    </div>
-  </div>
-
-  <div className="form-group">
-          <label htmlFor="parentFirstName">Parent Name (for minors)</label>
+        <div className="form-group">
+          <label htmlFor="child_first_name">Player Name <span className="required">*</span></label>
           <div className="name-fields">
-            <input 
-              type="text" 
-              id="parentFirstName" 
-              placeholder="First Name" 
-              value={formData.parentFirstName}
+            <input
+              type="text"
+              id="child_first_name"
+              placeholder="First Name"
+              required
+              value={formData.child_first_name}
               onChange={handleChange}
             />
-            <input 
-              type="text" 
-              id="parentLastName" 
-              placeholder="Last Name" 
-              value={formData.parentLastName}
+            <input
+              type="text"
+              id="child_last_name"
+              placeholder="Last Name"
+              value={formData.child_last_name}
               onChange={handleChange}
             />
           </div>
         </div>
 
         <div className="form-group">
-    <label htmlFor="phoneNumber">Phone Number <span className="required">*</span></label>
+          <label htmlFor="parent_first_name">Parent Name (for minors)</label>
+          <div className="name-fields">
+            <input 
+              type="text" 
+              id="parent_first_name" 
+              placeholder="First Name" 
+              value={formData.parent_first_name}
+              onChange={handleChange}
+            />
+            <input 
+              type="text" 
+              id="parent_last_name" 
+              placeholder="Last Name" 
+              value={formData.parent_last_name}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone">Phone Number <span className="required">*</span></label>
           <input 
             type="tel" 
-            id="phoneNumber" 
+            id="phone" 
             required 
-            value={formData.phoneNumber}
+            value={formData.phone}
             onChange={handleChange}
           />
         </div>
@@ -149,37 +153,19 @@ const Payment = () => {
           />
         </div>
 
-        <div className="form-group"> 
-          <label htmlFor="section">Section <span className="required">*</span></label>
-          <select 
-            id="section" 
-            required 
-            value={formData.section}
-            onChange={handleChange}
+        <div className="button-group">
+          <button
+            type="button"
+            className="back-button"
+            onClick={() => (window.location.href = 'https://www.chesschamps.us/')}
           >
-            <option value="">Please Select</option>
-            <option value="K – 2 - ($20)">K – 2 - ($20)</option>
-            <option value="3rd – 5th grade - ($20)">3rd – 5th grade - ($20)</option>
-            <option value="6th – 8th grade - ($20)">6th – 8th grade - ($20)</option>
-            <option value="9th – 12th grade - ($20)">9th – 12th grade - ($20)</option>
-            <option value="Open - ($20)">Open - ($20)</option>
-          </select>
-  </div>
-  <div className="button-group">
-  <button
-      type="button"
-      className="back-button"
-      onClick={() => (window.location.href = 'https://www.chesschamps.us/')}
-    >
-      Back
-    </button>
-    <button type="submit" className="submit-button">
-      Submit
-    </button>
-   
-    </div>
-</form>
-
+            Back
+          </button>
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
