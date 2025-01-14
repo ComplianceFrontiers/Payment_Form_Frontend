@@ -11,7 +11,6 @@ const Payment = () => {
     child_last_name: "",
     phone: '',
     email: '',
-    chessclub: true,
   });
 
   const [tournamentTimings, setTournamentTimings] = useState<string>('');
@@ -39,7 +38,6 @@ const Payment = () => {
       child_last_name: "",
       phone: '',
       email: '',
-      chessclub: true,
     }); // Reset the form fields
   };
   
@@ -54,7 +52,7 @@ const Payment = () => {
     setLoading(true); // Set loading to true on submit
 
     try {
-      await axios.post('https://backend-chess-tau.vercel.app/new_online_purchase_user', formData);
+      await axios.post('https://backend-chess-tau.vercel.app/form_chess_club_bp_submit', formData);
       setShowThankYouPopup(true); // Show the Thank You popup
     } catch (error) {
       console.error('Error during API call:', error);
