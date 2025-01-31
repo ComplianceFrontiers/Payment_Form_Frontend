@@ -11,6 +11,7 @@ const Payment = () => {
     child_last_name: "",
     phone: '',
     email: '',
+    chess_club_middletown:true,
   });
 
   const [tournamentTimings, setTournamentTimings] = useState<string>('');
@@ -38,6 +39,7 @@ const Payment = () => {
       child_last_name: "",
       phone: '',
       email: '',
+      chess_club_middletown:true,
     }); // Reset the form fields
   };
   
