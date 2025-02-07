@@ -7,7 +7,7 @@ const TermsAndConditions1 = () => {
  
   // Handler function for the Go Back button
   const handleGoBack = () => {
-    window.history.back();
+  window.location.href = 'https://chess-champs-tournaments.vercel.app/PA'
   };
   return (
     <div className="terms-and-conditions">
