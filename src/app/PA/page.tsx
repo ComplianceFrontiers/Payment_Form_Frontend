@@ -17,6 +17,7 @@ const Payment = () => {
   const [tournamentTimings, setTournamentTimings] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [showThankYouPopup, setShowThankYouPopup] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false); // New state for terms and conditions
 
   useEffect(() => {
     const fetchTournamentTimings = async () => {
@@ -47,6 +48,10 @@ const Payment = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = event.target;
     setFormData(prevData => ({ ...prevData, [id]: value }));
+  };
+
+  const handleTermsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTermsAccepted(event.target.checked);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -160,6 +165,25 @@ const Payment = () => {
           />
         </div>
 
+        {/* <div className="form-group"> */}
+  <label>
+    <input
+      type="checkbox"
+      checked={termsAccepted}
+      onChange={handleTermsChange}
+    />
+    I accept the{' '}
+    <a
+      href="/terms-and-conditions"
+      style={{ color: 'blue', textDecoration: 'underline' }}
+      target="_blank" // Opens the link in a new tab
+      rel="noopener noreferrer" // Recommended for security with target="_blank"
+    >
+      terms and conditions
+    </a>
+  </label>
+{/* </div> */}
+
         <div className="button-group">
           <button
             type="button"
@@ -168,7 +192,7 @@ const Payment = () => {
           >
             Back
           </button>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" disabled={!termsAccepted}>
             Submit
           </button>
         </div>
