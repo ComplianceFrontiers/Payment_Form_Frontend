@@ -83,11 +83,15 @@ const Payment = () => {
 
       <div className="tournament-header">
         <img src="/images/logo.png" alt="Chess Tournament Logo" className="tournament-logo" />
+        </div>
         <h1>Chess Club Registration</h1>
+        <div className="tournament-header1">
+        
         <p><strong>Club Dates:</strong> 24-Feb-2025, 3-Mar-2025, 10-Mar-2025, 17-Mar-2025</p>
         <p><strong>Club Timings:</strong> 7:00 P.M – 9:00 P.M</p>
         <p><strong>Location:</strong> 576 Concord Road, Glen Mills, PA 19342</p>
         <p><strong>Registration Fees:</strong> $10 for 4 weeks</p>
+        
       </div>
 
       <form className="registration-form" onSubmit={handleSubmit}>
