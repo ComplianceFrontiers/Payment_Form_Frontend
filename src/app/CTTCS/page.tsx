@@ -128,7 +128,7 @@ const Payment = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="parent_first_name">Parent Name (for minors)</label>
+          <label htmlFor="parent_first_name">Parent Name <span className="required">*</span> </label>
           <div className="name-fields">
             <input 
               type="text" 
