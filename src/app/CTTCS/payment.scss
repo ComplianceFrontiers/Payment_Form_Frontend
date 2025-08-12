@@ -94,16 +94,17 @@
   border-radius: 8px; // Optional: Adds rounded corners
 }
 .tournament-logo {
-  width: 100px;
+  width: 200px;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
 }
 
 h1 {
   text-align: center; // Centers the text inside h1
-  font-size: 24px;
+  font-size: 30px;
+  font-weight: bold;
   color: #000000;
-  margin: 0 auto; // Ensures centering
+  margin-bottom: 15px;
   display: flex;
   justify-content: center; // Aligns text horizontally inside flex
   width: 100%;
