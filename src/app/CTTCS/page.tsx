@@ -62,7 +62,7 @@ const Payment = () => {
 
     try {
       await axios.post('https://backend-chess-tau.vercel.app/form_chess_club_bp_submit', formData);
-      window.location.href = 'https://buy.stripe.com/8wMg2e29AgXO8YobIZ';
+      window.location.href = 'https://www.paypal.com/ncp/payment/8JCAFPSKYH85L';
 
     } catch (error) {
       console.error('Error during API call:', error);
