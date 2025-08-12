@@ -100,7 +100,7 @@ const Payment = () => {
         <p><strong>Event Address:</strong> 2451 Frazer Rd, Newark, DE 19702</p>
         <p><strong>Contact us:</strong> (302) 838-8850 or connect@chesschamps.us</p>
         <p><strong>Round Timings:</strong> 10:30 am - 11:15 am - 12:00 pm - 1:00 pm - 1:45 pm </p>
-        <p><strong>Award Ceremony:</strong> 12/31/1899 2:30:00 PM</p>
+        <p><strong>Award Ceremony:</strong> 2:30 PM</p>
         <p><strong>Registrtaion:</strong> $25 till October 15th; $30 thereafter; onsite registration $45</p>
         
       </div>
@@ -192,8 +192,7 @@ const Payment = () => {
       type="checkbox"
       checked={termsAccepted}
       onChange={handleTermsChange}
-    />
-    I accept the{' '}
+    />  I accept the{' '}
     <a
       href="/terms-and-conditions"
       style={{ color: 'blue', textDecoration: 'underline' }}
